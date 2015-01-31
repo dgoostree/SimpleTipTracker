@@ -1,0 +1,575 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+    
+    <TextView
+	    android:id="@+id/edit_hourly_wage"
+	    android:layout_width="90dp"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
+	    android:text="@string/hourly_wage"
+	    android:textStyle="bold" />
+    
+    <EditText
+        android:id="@+id/edit_hourly_wage_content"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/edit_hourly_wage"
+        android:layout_alignBaseline="@id/edit_hourly_wage" 
+        android:singleLine="true"
+        android:inputType="numberDecimal"
+        android:digits="0123456789."
+        android:imeOptions="actionDone"
+        android:gravity="center"
+        android:text="@string/zero_point_zero" />
+    
+    <TextView
+	    android:id="@+id/week_begin"
+	    android:layout_width="90dp"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/edit_hourly_wage"
+	    android:paddingTop="25dp"
+	    android:text="@string/week_start"
+	    android:textStyle="bold" />
+    
+    <Spinner
+        android:id="@+id/day_spinner"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/week_begin"
+        android:layout_below="@id/edit_hourly_wage_content"
+        android:gravity="center" />
+    
+    <TextView
+	    android:id="@+id/edit_tipee_tipee"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/week_begin"
+	    android:paddingTop="25dp"
+	    android:text="@string/tipee_label"
+	    android:textStyle="bold" />
+    
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_tipee_tipee"
+        android:paddingLeft="30dp"
+        android:layout_marginBottom="35dp" >
+        
+        <RelativeLayout
+            android:id="@+id/edit_tipee_layout"
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content" >
+     	
+		    <TextView
+		        android:id="@+id/name1"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		    
+		    <TextView
+		        android:id="@+id/plus_textview"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentRight="true"
+		        android:layout_alignBaseline="@id/name1"
+		        android:clickable="true"
+		        android:focusable="false"
+		        android:focusableInTouchMode="false"
+		        android:gravity="center"
+		        android:onClick="getNewTipeeName"
+		        android:paddingLeft="30dp"
+		        android:text="@string/plus_text"
+		        android:textSize="20sp"
+		        android:textStyle="bold" />
+		        
+		    <TextView
+	        android:id="@+id/minus1"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:visibility="gone"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:paddingTop="15dp"
+	        android:textSize="20sp"
+	        android:text="@string/minus_text"
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name2"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/name1"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		        
+		    <TextView
+	        android:id="@+id/minus2"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:layout_alignBaseline="@id/name2"
+	        android:textSize="20sp"
+	        android:visibility="gone"
+	        android:text="@string/minus_text" 
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee"/>
+		    
+		    <TextView
+		        android:id="@+id/name3"
+		        android:layout_below="@id/name2"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		        
+		    <TextView
+	        android:id="@+id/minus3"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:layout_alignBaseline="@id/name3"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textSize="20sp"
+	        android:visibility="gone"
+	        android:text="@string/minus_text"
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name4"
+		        android:layout_below="@id/name3"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+	        android:id="@+id/minus4"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:layout_alignBaseline="@id/name4"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textSize="20sp"
+	        android:visibility="gone"
+	        android:text="@string/minus_text"
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name5"
+		        android:layout_below="@id/name4"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		        
+		    <TextView
+	        android:id="@+id/minus5"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:layout_alignBaseline="@id/name5"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textSize="20sp"
+	        android:visibility="gone"
+	        android:text="@string/minus_text"
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name6"
+		        android:layout_below="@id/name5"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+	        android:id="@+id/minus6"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:layout_alignBaseline="@id/name6"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textSize="20sp"
+	        android:visibility="gone"
+	        android:text="@string/minus_text"
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name7"
+		        android:layout_below="@id/name6"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+	        android:id="@+id/minus7"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:layout_alignBaseline="@id/name7"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textSize="20sp"
+	        android:visibility="gone"
+	        android:text="@string/minus_text" 
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name8"
+		        android:layout_below="@id/name7"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+	        android:id="@+id/minus8"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:layout_alignBaseline="@id/name8"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textSize="20sp"
+	        android:visibility="gone"
+	        android:text="@string/minus_text"
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name9"
+		        android:layout_below="@id/name8"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+		        android:id="@+id/minus9"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name9"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name10"
+		        android:layout_below="@id/name9"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+		        android:id="@+id/minus10"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name10"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name11"
+		        android:layout_below="@id/name10"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		        
+		    <TextView
+		        android:id="@+id/minus11"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name11"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name12"
+		        android:layout_below="@id/name11"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+		        android:id="@+id/minus12"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name12"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name13"
+		        android:layout_below="@id/name12"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+		        android:id="@+id/minus13"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name13"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name14"
+		        android:layout_below="@id/name13"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+		        android:id="@+id/minus14"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name14"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name15"
+		        android:layout_below="@id/name14"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		        
+		    <TextView
+		        android:id="@+id/minus15"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name15"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name16"
+		        android:layout_below="@id/name15"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		        
+		    <TextView
+		        android:id="@+id/minus16"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name16"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name17"
+		        android:layout_below="@id/name16"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+		        android:id="@+id/minus17"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name17"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name18"
+		        android:layout_below="@id/name17"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		        
+		    <TextView
+		        android:id="@+id/minus18"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name18"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name19"
+		        android:layout_below="@id/name18"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone"/>
+		        
+		    <TextView
+		        android:id="@+id/minus19"
+		        android:layout_toLeftOf="@id/plus_textview"
+		        android:layout_alignBaseline="@id/name19"
+		        android:layout_width="15dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:textSize="20sp"
+		        android:visibility="gone"
+		        android:text="@string/minus_text"
+		        android:focusableInTouchMode="false"
+			    android:focusable="false"
+			    android:clickable="true"
+			    android:onClick="removeTipee" />
+		    
+		    <TextView
+		        android:id="@+id/name20"
+		        android:layout_below="@id/name19"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="15dp"
+		        android:visibility="gone" />
+		        
+		    <TextView
+	        android:id="@+id/minus20"
+	        android:layout_toLeftOf="@id/plus_textview"
+	        android:layout_alignBaseline="@id/name20"
+	        android:layout_width="15dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textStyle="bold"
+	        android:textSize="20sp"
+	        android:visibility="gone"
+	        android:text="@string/minus_text" 
+	        android:focusableInTouchMode="false"
+		    android:focusable="false"
+		    android:clickable="true"
+		    android:onClick="removeTipee" />
+
+		    
+
+	    </RelativeLayout>
+	    
+    </ScrollView>
+    
+    
+    
+	<TextView
+	    android:id="@+id/save_tipee_list"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_centerInParent="true"
+		android:gravity="center"
+		android:layout_marginTop="20dp"
+		android:text="@string/save_tipee_list"
+		android:textStyle="bold"
+		android:textSize="20sp" 
+		android:focusableInTouchMode="false"
+		android:focusable="false"
+		android:clickable="true"
+		android:onClick="saveTipeeList" />
+
+	
+    
+</RelativeLayout>

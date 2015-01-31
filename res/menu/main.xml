@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.goostree.simpletipcalculator.MainActivity" >
+        
+    <item 
+        android:id="@+id/menu_delete_tip_record"
+        android:orderInCategory="50"
+        android:title="@string/delete_record"
+        app:showAsAction="never"/>
+    
+    <item
+        android:id="@+id/load_backup"
+        android:orderInCategory="100"
+        android:title="@string/load_backup"
+        app:showAsAction="never" />
+    
+    <item
+        android:id="@+id/load_backup_from_file"
+        android:orderInCategory="150"
+        android:title="@string/load_backup_from_file"
+        app:showAsAction="never" />
+    
+    <item
+        android:id="@+id/remote_backup_record"
+        android:orderInCategory="200"
+        android:title="@string/remote_backup_record"
+        app:showAsAction="never" />
+    
+    <item
+        android:id="@+id/toggle_calendar_shown"
+        android:orderInCategory="250"
+        android:title="@string/toggle_calendar"
+        app:showAsAction="never" />
+    
+</menu>

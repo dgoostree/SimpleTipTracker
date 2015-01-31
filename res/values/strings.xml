@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Tip Tracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="delete_record">Delete Tip Record</string>
+    <string name="load_backup">Load Auto Backup</string>
+    <string name="load_backup_from_file">Load Backup From File</string>
+    <string name="remote_backup_record">Save Remote Backup</string>
+    <string name="add_tip">Add Shift</string>
+    <string name="edit_tip">Edit Shift</string>
+    <string name="edit_tipee">Edit Job Details</string>
+    <string name="view_tips">View Shift Summary</string>
+    <string name="title_activity_add">Add Shift</string>
+    <string name="title_activity_edit_tip">Edit Shift</string>
+    <string name="title_activity_edit_tipee">Edit Job Details</string>
+    <string name="title_activity_view_tip">View Tip Info</string>
+	<string name="date_text">Date:</string>
+	<string name="date_range_text">Range:</string>
+	<string name="date_edit_text">mm.dd.yyyy</string>
+	<string name="gross_tips_text">Gross tips:</string>
+	<string name="gross_tips_edit_text">Enter tips</string>
+	<string name="gross_tipouts_text">Gross tipouts:</string>
+	<string name="add_tipee_text">Tipouts:</string>
+	<string name="plus_text">+</string>
+	<string name="minus_text">-</string>
+	<string name="save_new_tip">Save Tip Info</string>
+	<string name="save_button">Save</string>
+	<string name="delete_button">Delete</string>
+	<string name="save_tipee_list">Save Job Details</string>
+	<string name="net_tips_label">Net tips:</string>
+	<string name="zero_point_zero">0.0</string>
+	<string name="tipout_details">Tipout details:</string>
+	<string name="done">Done</string>
+	<string name="hours_worked_text">Hours:</string>
+	<string name="tipee_label">Tipees:</string>
+	<string name="hourly_wage">Hourly wage:</string>
+	<string name="wages">Wages:</string>
+	<string name="earnings">Earnings:</string>
+	<string name="week_start">Week Sart:</string>
+	<string name="toggle_calendar">Toggle Calendar Selection</string>
+</resources>
