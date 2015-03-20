@@ -24,7 +24,6 @@ public class DailyDetailFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		View rootView = inflater.inflate(R.layout.fragment_view_daily, container, false);
 		ViewTipActivity viewActivity = (ViewTipActivity)getActivity();
-		
 				
 		int count = viewActivity.dateList.size();
 		double highest = 0;
@@ -69,22 +68,26 @@ public class DailyDetailFragment extends Fragment {
 				date.setPadding(0, 30, 0, 0);
 			}
 						
+			//hours worked
+			TextView hours = new TextView(getActivity());
+			hours.setText("Hrs: " + currentEntry.getHoursWorked());
+			//hours.setGravity(Gravity.LEFT);
 			
-			//wages tips 
+			//wages 
 			TextView wages = new TextView(getActivity());
 			wages.setText("Wages: " + currentEntry.getWagesEarned());
-			wages.setGravity(Gravity.LEFT);
+			//wages.setGravity(Gravity.CENTER);
 			
 			
 			//net tips
 			TextView tips = new TextView(getActivity());
 			tips.setText("Tips: " + currentEntry.getNetTips());
-			tips.setGravity(Gravity.CENTER);
+			//tips.setGravity(Gravity.RIGHT);
 			
 			//dollars per hour
 			TextView dph = new TextView(getActivity());
 			dph.setText("$/hr: " + currentEntry.getDollarsPerHour());
-			dph.setGravity(Gravity.RIGHT);
+			//dph.setGravity(Gravity.RIGHT);
 			
 			LinearLayout topInnerLayout = new LinearLayout(getActivity());
 			
@@ -99,6 +102,7 @@ public class DailyDetailFragment extends Fragment {
 			topInnerLayout.addView(dayName, innerParams);
 			topInnerLayout.addView(notePresent, innerParams);
 			
+			innerLayout.addView(hours, innerParams);
 			innerLayout.addView(wages, innerParams);
 			innerLayout.addView(tips, innerParams);
 			innerLayout.addView(dph, innerParams);

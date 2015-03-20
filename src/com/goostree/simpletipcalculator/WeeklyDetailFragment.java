@@ -4,18 +4,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.goostree.simpletipcalculator.base.TipEntryv2;
-import com.goostree.simpletipcalculator.base.TipRecordv2;
-
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.goostree.simpletipcalculator.base.TipEntryv2;
+import com.goostree.simpletipcalculator.base.TipRecordv2;
 
 public class WeeklyDetailFragment extends Fragment {
 
@@ -63,23 +62,27 @@ public class WeeklyDetailFragment extends Fragment {
 				
 				double wageTotal = tipRecord.getWagesTotal(currentWeekEntries);
 				double tipsTotal = tipRecord.getNetTipsTotal(currentWeekEntries);
+				double hoursTotal = tipRecord.getHoursTotal(currentWeekEntries);
 				
 				if( (wageTotal + tipsTotal) > highest ){
 					highest = wageTotal + tipsTotal;
 					highestDate = date;
 				}
 				
+				TextView hours = new TextView(getActivity());
+				hours.setText("Hrs: " + hoursTotal);
+				
 				TextView wages = new TextView(getActivity());
 				wages.setText("Wages: " + wageTotal);
 				
 				TextView tips = new TextView(getActivity());
 				tips.setText("Tips: " + tipsTotal);
-				tips.setGravity(Gravity.CENTER);
+				//tips.setGravity(Gravity.CENTER);
 				
 				TextView dph = new TextView(getActivity());
 				dph.setText("$/hr: " + 
 						tipRecord.getDPHTotal(currentWeekEntries));
-				dph.setGravity(Gravity.RIGHT);
+				//dph.setGravity(Gravity.RIGHT);
 				
 				LinearLayout innerLayout = new LinearLayout(getActivity());
 				innerLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -91,6 +94,7 @@ public class WeeklyDetailFragment extends Fragment {
 				LinearLayout.LayoutParams innerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
 						LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
 				
+				innerLayout.addView(hours, innerParams);
 				innerLayout.addView(wages, innerParams);
 				innerLayout.addView(tips, innerParams);
 				innerLayout.addView(dph, innerParams);

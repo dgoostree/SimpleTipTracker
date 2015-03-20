@@ -34,8 +34,13 @@ public class TipoutDetailFragment extends Fragment {
 		double tipouts = viewActivity.tipRecord.getTipoutTotals(viewActivity.dateList, tipeeNames, tipeeAmt);//get the net tips, list of names, corresponding tipout values
 		double netTips = viewActivity.tipRecord.getNetTipsTotal(viewActivity.dateList);	//get netTips
 		double wages =viewActivity.tipRecord.getWagesTotal(viewActivity.dateList);		//get wages
-
-		TextView tempView = (TextView)rootView.findViewById(R.id.view_wages_content);	//get wages view
+		double hours = viewActivity.tipRecord.getHoursTotal(viewActivity.dateList);
+		
+		TextView tempView = (TextView)rootView.findViewById(R.id.view_hours_content);
+		tempView.setText(hours + "");
+		tempView.setVisibility(View.VISIBLE);
+		
+		tempView = (TextView)rootView.findViewById(R.id.view_wages_content);	//get wages view
 		tempView.setText(wages+"");														//set its text
 		tempView.setVisibility(View.VISIBLE);											//and visible
 

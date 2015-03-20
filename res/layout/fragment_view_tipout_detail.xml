@@ -30,10 +30,28 @@
 	        android:gravity="center" />
         
         <TextView
-	        android:id="@+id/view_wages"
+	        android:id="@+id/view_hours"
 	        android:layout_width="wrap_content" 
 	        android:layout_height="wrap_content"
 	        android:layout_below="@id/view_date_range"
+	        android:paddingTop="15dp"
+	        android:textStyle="bold"
+	        android:text="@string/hours" />
+	    
+	    <TextView
+	        android:id="@+id/view_hours_content"
+	        android:layout_width="140dp" 
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@id/view_hours"
+	        android:layout_centerHorizontal="true"
+	        android:gravity="center"
+	        android:visibility="gone"/>
+        
+        <TextView
+	        android:id="@+id/view_wages"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/view_hours"
 	        android:paddingTop="15dp"
 	        android:textStyle="bold"
 	        android:text="@string/wages" />

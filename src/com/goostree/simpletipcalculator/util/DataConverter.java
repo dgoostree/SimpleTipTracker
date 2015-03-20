@@ -1,18 +1,15 @@
 package com.goostree.simpletipcalculator.util;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.goostree.simpletipcalculator.TipEntry;
-import com.goostree.simpletipcalculator.TipRecord;
-import com.goostree.simpletipcalculator.TipoutRecord;
-import com.goostree.simpletipcalculator.base.TipEntryv2;
 import com.goostree.simpletipcalculator.base.TipRecordv2;
-import com.goostree.simpletipcalculator.base.TipoutRecordv2;
-@SuppressWarnings("deprecation")
+
 public class DataConverter {
 	public static TipRecordv2 convert(Object obj){
-		if(obj instanceof TipRecordv2){ //if no conversion necessary
+		
+		return (TipRecordv2)obj;
+		
+		//This was used to facilitate conversion when I modified the class paths
+		//
+		/*if(obj instanceof TipRecordv2){ //if no conversion necessary
 			return (TipRecordv2)obj;    //just return i
 		}
 		else { //otherwise we need to convert it
@@ -62,5 +59,6 @@ public class DataConverter {
 			}
 			return newRecord;
 		}//end conversion
+		*/
 	}
 }

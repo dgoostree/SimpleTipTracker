@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 public class MonthlyDetailFragment extends Fragment{
 	private final String[] monthsOfYear = {"January", "February", "March",
-			"April", "May", "June", "July", "August", "September", "November",
+			"April", "May", "June", "July", "August", "September", "October", "November",
 			"December"};	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){ //This is big. Like big, big. 
@@ -43,8 +43,6 @@ public class MonthlyDetailFragment extends Fragment{
 		Calendar currentMonth = (Calendar)firstMonth.clone();
 		
 		while(currentMonth.compareTo(lastMonth) <= 0){  //do while we're within the months requested
-			
-			
 			Calendar endOfMonth = (Calendar)currentMonth.clone();
 			endOfMonth.set(Calendar.DATE, endOfMonth.getActualMaximum(Calendar.DATE)); //set the end of the month
 			
@@ -68,11 +66,15 @@ public class MonthlyDetailFragment extends Fragment{
 				
 				double wageTotal = tipRecord.getWagesTotal(currentList);
 				double tipsTotal = tipRecord.getNetTipsTotal(currentList);
+				double hoursTotal = tipRecord.getHoursTotal(currentList);
 				
 				if( (wageTotal + tipsTotal) > highest ){
 					highest = wageTotal + tipsTotal;
 					highestDate = date;
 				}
+				
+				TextView hours = new TextView(getActivity());
+				hours.setText("Hrs: " + hoursTotal);
 				
 				TextView wages = new TextView(getActivity());
 				wages.setText("Wages: " + 
@@ -97,6 +99,7 @@ public class MonthlyDetailFragment extends Fragment{
 				LinearLayout.LayoutParams innerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
 						LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
 				
+				innerLayout.addView(hours, innerParams);
 				innerLayout.addView(wages, innerParams);
 				innerLayout.addView(tips, innerParams);
 				innerLayout.addView(dph, innerParams);

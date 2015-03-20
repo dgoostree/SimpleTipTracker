@@ -36,8 +36,8 @@ public class ViewTipActivity extends FragmentActivity implements ActionBar.TabLi
 	public int fromDay, fromMonth, fromYear;
 	public int toDay, toMonth, toYear;
 	protected Calendar earliestWeekBegin;
-	public TipRecordv2 tipRecord;
-	public ArrayList<TipEntryv2> dateList;
+	protected TipRecordv2 tipRecord;
+	protected ArrayList<TipEntryv2> dateList;
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private android.app.ActionBar actionBar;
@@ -67,17 +67,17 @@ public class ViewTipActivity extends FragmentActivity implements ActionBar.TabLi
 		Calendar twoMonths =(Calendar)fromDate.clone();//get first date selected
 		twoMonths.add(Calendar.DATE, 57);  // pick date at least two months out from beginning
 		
-		Calendar oneMonth = (Calendar)fromDate.clone(); //get first data again
-		oneMonth.add(Calendar.DATE, 13);  				//set test date to end of current month
+		Calendar twoWeeks = (Calendar)fromDate.clone(); //get first data again
+		twoWeeks.add(Calendar.DATE, 13);  				//set test date to two weeks out
 		
 		int numTabs = 0;
 		
 		if( toDate.compareTo(twoMonths) >= 0)  //if at least two months selected, show tabs for weekly and monthyly breakdown
 		{
 			tabs = new String[]{"Tipout Detail", "Daily", "Weekly", "Monthly"};
-			numTabs =4;
+			numTabs = 4;
 		}
-		else if( toDate.compareTo(oneMonth) >= 0) { //else if one month show weekly
+		else if( toDate.compareTo(twoWeeks) >= 0) { //else if one month show weekly
 			tabs = new String[]{"Tipout Detail", "Daily", "Weekly"};
 			numTabs = 3;
 		}
@@ -194,8 +194,13 @@ public class ViewTipActivity extends FragmentActivity implements ActionBar.TabLi
         	dphTot += dollarPerHour;
         	
         	SpreadsheetUtil.addRow(workbook, sheet, i + 1, 
-        			new String[]{today.getDateToString(), wages + "", gross + "", gross - net + "", 
-        			net + "", wages + net + "", dollarPerHour + ""});
+        			new String[]{today.getDateToString(), 
+        			TipRecordv2.round(wages) + "", 
+        			TipRecordv2.round(gross) + "", 
+        			TipRecordv2.round(gross - net) + "", 
+        			TipRecordv2.round(net) + "",
+        			TipRecordv2.round(wages + net) + "", 
+        			TipRecordv2.round(dollarPerHour) + ""});
             n++;
         }
         
@@ -203,8 +208,12 @@ public class ViewTipActivity extends FragmentActivity implements ActionBar.TabLi
         
         //add the totals to the sheet
         SpreadsheetUtil.addRow(workbook, sheet, i + 1, 
-        		new String[]{"Total", wagesTot + "", grossTot + "", + tipoutTot + "", netTot + "",
-        		earnTot + "", Math.round( 100 * (dphTot/n))/100.0 + ""});
+        		new String[]{"Total", TipRecordv2.round(wagesTot) + "",
+        		TipRecordv2.round(grossTot) + "",
+        		TipRecordv2.round(tipoutTot) + "", 
+        		TipRecordv2.round(netTot) + "",
+        		TipRecordv2.round(earnTot) + "", 
+        		TipRecordv2.round(dphTot) + ""});
         
         i += 3;//currentRow is now i
         SpreadsheetUtil.addRow(workbook, sheet, i, new String[]{"Tipee", "Amount"});

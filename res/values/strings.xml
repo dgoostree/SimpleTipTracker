@@ -34,6 +34,7 @@
 	<string name="hours_worked_text">Hours:</string>
 	<string name="tipee_label">Tipees:</string>
 	<string name="hourly_wage">Hourly wage:</string>
+	<string name="hours">Hours:</string>
 	<string name="wages">Wages:</string>
 	<string name="earnings">Earnings:</string>
 	<string name="week_start">Week Sart:</string>

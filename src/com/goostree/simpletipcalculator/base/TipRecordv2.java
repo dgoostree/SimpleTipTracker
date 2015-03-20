@@ -8,6 +8,7 @@ package com.goostree.simpletipcalculator.base;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+
 import android.app.Application;
 //
 //  TipRecord - Extends Application so its data persists for entire scope of the app
@@ -31,7 +32,7 @@ public class TipRecordv2 extends Application implements Serializable {
 	}
 	
 	//
-	// Insertion sort for a standard ArrayList - update this later please
+	// Insert
 	public void addRecordSorted(TipEntryv2 entry){
 		if(tipLog.size() == 0){
 			tipLog.add(entry); 	//if the tip record is empty, just add it
@@ -220,6 +221,16 @@ public class TipRecordv2 extends Application implements Serializable {
 		return (Math.round(amt * 100) /100.0);
 	}
 	
+	public double getHoursTotal(ArrayList<TipEntryv2> theList){
+		double tot = 0;
+		
+		for(TipEntryv2 curr : theList){
+			tot += curr.getHoursWorked();
+		}
+		
+		return (Math.round(tot * 100) / 100.0);  //this little bit of arithmetic really should be in a function TODO
+	}
+	
 	//
 	//Returns a double of the total tipouts, and populates two arraylists (parameters) with corresponding
 	//	tipout recipient and total.  Ensures each tipee is listed only once.
@@ -331,5 +342,9 @@ public class TipRecordv2 extends Application implements Serializable {
    public long getSerialversionuid() {
 		return serialVersionUID;
 	}
+   
+   public static double round(Double x){
+	   return Math.round(100 * x)/100.0;
+   }
 }
      
